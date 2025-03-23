@@ -1,5 +1,10 @@
 # Ex10:
-#
+# Load the length of the array from the data segment
+# Set the maximum equal to the first element of the array
+# Iterate through the elements of the array
+# If the current element it's greater than the maximum, change it
+# Print the maximum
+# Exit program
 
 .data
     .word 9
