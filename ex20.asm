@@ -20,6 +20,8 @@
     lw t1, list
     addi a0, zero, 0
     
+    beq t1, zero, end
+    
 loop:
     lw t2, 0(t1)
     lw t1, 4(t1)
@@ -30,6 +32,7 @@ loop:
 condition:
     bne t1, zero, loop
     
+end:
     addi a7, zero, 1
     ecall
     
