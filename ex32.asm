@@ -12,27 +12,25 @@
     
 .text
     lw s0, n  # X length
-    lw s1, m  # Y length
     la s2, x  # Pointer to X 1st element
-    la s3, y  # Pointer to Y 1st element
     
     li a0, 0
     
 outer_loop:
     lw t0, 0(s2)
-    li t2, 0
-    addi t3, s3, 0
+    lw s1, m  # Y length
+    la s3, y  # Pointer to Y 1st element
 
 inner_loop:
-    lw t1, 0(t3)
+    lw t1, 0(s3)
     bne t1, t0, skip
     li a0, 1
-    beq zero, zero, end
+    j end
     
 skip:
-    addi t2, t2 1
-    addi t3, t3, 4
-    blt t2, s1, inner_loop
+    addi s1, s1, -1
+    addi s3, s3, 4
+    bgt s1, zero, inner_loop
 
     addi s0, s0, -1
     addi s2, s2, 4
